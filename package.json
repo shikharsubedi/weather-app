@@ -1,13 +1,22 @@
 {
   "name": "weather-app",
   "version": "1.0.0",
-  "main": "src/app.ts",
+  "main": "src/main.ts",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/shikharsubedi/weather-app.git"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node build/src/main.js",
+    "clean": "rimraf coverage build tmp",
+    "prebuild": "npm run lint",
+    "build": "tsc -p tsconfig.json",
+    "build:watch": "tsc -w -p tsconfig.json",
+    "build:release": "npm run clean && tsc -p tsconfig.release.json",
+    "lint": "eslint . --ext .ts",
+    "test:coverage": "nyc mocha --require ts-node/register src/**/*.spec.ts",
+    "test": "mocha --timeout 30000 --require ts-node/register src/**/*.spec.ts",
+    "style-fix": "prettier --config .prettierrc --write ."
   },
   "homepage": "https://github.com/shikharsubedi/weather-app#readme",
   "keywords": [],
@@ -16,6 +25,7 @@
   "description": "Get current weather using API",
   "dependencies": {
     "axios": "^1.7.7",
+    "dotenv": "^16.4.5",
     "express": "^4.19.2",
     "joi": "^17.13.3"
   },
@@ -23,12 +33,18 @@
     "@types/chai": "^4.3.19",
     "@types/express": "^4.17.21",
     "@types/mocha": "^10.0.7",
+    "@types/node": "^20.16.5",
     "@types/sinon": "^17.0.3",
+    "@typescript-eslint/eslint-plugin": "^8.4.0",
+    "@typescript-eslint/parser": "^8.4.0",
     "chai": "^5.1.1",
+    "eslint": "^9.10.0",
+    "eslint-config-prettier": "^9.1.0",
     "mocha": "^10.7.3",
     "node-ts": "^6.1.2",
     "nodemon": "^3.1.4",
     "nyc": "^17.0.0",
+    "prettier": "^3.3.3",
     "rimraf": "^6.0.1",
     "sinon": "^18.0.0"
   }
