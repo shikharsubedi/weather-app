@@ -6,7 +6,7 @@ import mochaPlugin from "eslint-plugin-mocha";
 
 
 export default [
-  {ignores: ['dist/']},
+  {ignores: ['build/']},
   {files: ["src/**/*.ts"]},
   {languageOptions: { globals: globals.node }},
   pluginJs.configs.recommended,
