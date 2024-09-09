@@ -6,8 +6,6 @@ const minLatitude = -90;
 const minLongitude = -180;
 const maxLongitude = 180;
 
-
-
 export async function validateInput(lat:rawInput, lon:rawInput):Promise<validInput> | never {
   const inputObject: {lat?:number, lon?:number} = {
     ...((lat != null && lat !== '')?{lat:Number(lat)}:{}),
@@ -20,8 +18,7 @@ export async function validateInput(lat:rawInput, lon:rawInput):Promise<validInp
   })
 
   const sanitizedInput:validInput = await validationSchema.validateAsync(inputObject)
-
-  
+ 
   return sanitizedInput;
 }
 
