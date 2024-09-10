@@ -1,5 +1,5 @@
-import Joi from "joi";
-import { rawInput, validInput } from "./schema/types";
+import Joi from 'joi';
+import { rawInput, validInput } from './schema/types';
 
 const maxLatitude = 90;
 const minLatitude = -90;
@@ -11,8 +11,8 @@ export async function validateInput(
   lon: rawInput
 ): Promise<validInput> | never {
   const inputObject: { lat?: number; lon?: number } = {
-    ...(lat != null && lat !== "" ? { lat: Number(lat) } : {}),
-    ...(lon != null && lon !== "" ? { lon: Number(lon) } : {}),
+    ...(lat != null && lat !== '' ? { lat: Number(lat) } : {}),
+    ...(lon != null && lon !== '' ? { lon: Number(lon) } : {}),
   };
 
   const validationSchema = Joi.object({

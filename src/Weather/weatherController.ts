@@ -1,9 +1,11 @@
-import { Request, Response, NextFunction } from "express";
-import { ValidationError } from "joi";
-import { validateInput } from "./weatherValidation";
-import { validInput, rawInput } from "./schema/types";
+import { Request, Response, NextFunction } from 'express';
+import { ValidationError } from 'joi';
+import { validateInput } from './weatherValidation';
+import { validInput, rawInput } from './schema/types';
 
-import WeatherService from "./WeatherService";
+import WeatherService from './WeatherService';
+import { IResponseGenerator } from './schema/IResponseGenerator';
+import { ResponseGenerator } from './ResponseGenerator';
 
 export async function fetchCurrentWeather(
   req: Request,
@@ -15,7 +17,12 @@ export async function fetchCurrentWeather(
       req.query?.lat as rawInput,
       req.query?.lon as rawInput
     );
-    const service = new WeatherService(sanitizedInput.lat, sanitizedInput.lon);
+    const responseGenerator: IResponseGenerator = new ResponseGenerator();
+    const service = new WeatherService(
+      sanitizedInput.lat,
+      sanitizedInput.lon,
+      responseGenerator
+    );
     const result = await service.fetchWeather();
     return res.status(200).json(result);
   } catch (err: unknown) {

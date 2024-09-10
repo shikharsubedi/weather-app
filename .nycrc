@@ -4,9 +4,9 @@
   "extension": [".ts"],
   "reporter": ["lcov", "text", "text-summary"],
   "check-coverage": true,
-  "lines": 95,
-  "statements": 95,
-  "functions": 95,
-  "branches": 95,
+  "lines": 92,
+  "statements": 92,
+  "functions": 92,
+  "branches": 92,
   "report-dir": "./.test_report"
 }

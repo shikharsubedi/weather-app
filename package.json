@@ -15,9 +15,10 @@
     "watch": "nodemon src/main.ts",
     "lint": "eslint",
     "fix": "eslint --fix",
-    "test:coverage": "nyc mocha --require ts-node/register src/**/*.spec.ts",
-    "test": "mocha --timeout 30000 --require ts-node/register src/**/*.spec.ts",
-    "test:watch": "mocha -r ts-node/register src/**/*.spec.ts --watch --watch-files src/**/*.ts"
+    "format": "prettier --write .",
+    "test:coverage": "nyc mocha",
+    "test": "mocha --recursive ",
+    "test:watch": "mocha -w --watch-files ./**/*.ts'"
   },
   "homepage": "https://github.com/shikharsubedi/weather-app#readme",
   "keywords": [],
@@ -45,7 +46,7 @@
     "@types/swagger-ui-express": "^4.1.6",
     "@typescript-eslint/eslint-plugin": "^8.4.0",
     "@typescript-eslint/parser": "^8.4.0",
-    "chai": "^5.1.1",
+    "chai": "^4.3.0",
     "eslint": "^9.10.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-mocha": "^10.5.0",
