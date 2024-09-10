@@ -3,6 +3,7 @@ export interface IApiResponse {
   lon:number,
   timezone: string,
   current: {
+     dateTime:string,
      temp:number,
      feelsLike:number,
      tempDescription: 'hot' | 'moderate' | 'cold',
