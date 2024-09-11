@@ -1,18 +1,24 @@
 import { IApiResponse } from './schema/IApiResponse';
-import { alertType, tempType } from './schema/types';
+import { alertType } from './schema/types';
 import { IWeatherData } from './schema/IWeatherData';
 import { IResponseGenerator } from './schema/IResponseGenerator';
 import WeatherService from './WeatherService';
 
 export class ResponseGenerator implements IResponseGenerator {
+  /**
+   *
+   * @param apiData IWeatherData
+   * @returns IApiResponse
+   * This method implements the IResponseGenerator interface
+   */
   public generate(apiData: IWeatherData): IApiResponse {
     const current: IWeatherData['current'] = apiData.current;
+
     const alerts: IWeatherData['alerts'] = apiData.alerts;
-    const currentResponse: IApiResponse['current'] = this.createCurrentResponse(
-      current,
-      WeatherService.getWeatherDescription(apiData.current.weather),
-      WeatherService.getTempDescription(apiData.current.feels_like)
-    );
+
+    const currentResponse: IApiResponse['current'] =
+      this.createCurrentResponse(current);
+
     const alertsResponse: IApiResponse['alerts'] = this.createAlertsResponse(
       apiData.timezone,
       alerts
@@ -32,15 +38,17 @@ export class ResponseGenerator implements IResponseGenerator {
   }
 
   private createCurrentResponse(
-    current: IWeatherData['current'],
-    weatherDescription: string,
-    tempDescription: tempType
+    current: IWeatherData['current']
   ): IApiResponse['current'] {
     const result: IApiResponse['current'] = {} as IApiResponse['current'];
     result.temp = current.temp;
     result.feelsLike = current.feels_like;
-    result.tempDescription = tempDescription;
-    result.weatherDescription = weatherDescription;
+    result.tempDescription = WeatherService.getTempDescription(
+      current.feels_like
+    );
+    result.weatherDescription = WeatherService.getWeatherDescription(
+      current.weather
+    );
     return result;
   }
 

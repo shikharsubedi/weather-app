@@ -9,6 +9,7 @@ export default class WeatherService {
   private lat: number;
   private lon: number;
   private responseGenerator: IResponseGenerator;
+  
   public constructor(
     lat: number,
     lon: number,
@@ -46,6 +47,12 @@ export default class WeatherService {
     return apiData.data;
   }
 
+  /**
+   *
+   * this method is used by Response Generator to generate the temperature description
+   * @param temp number
+   * @returns "hot" | "moderate" | "cold"
+   */
   public static getTempDescription(temp: number): tempType {
     if (temp < WeatherService.lowTemp) {
       return 'cold';
@@ -56,17 +63,28 @@ export default class WeatherService {
     return 'hot';
   }
 
+  /**
+   *
+   * this method returns the weather summary. Used by the response generatory method
+   * @param weather Array<{ description: string}>
+   * @returns string
+   */
   public static getWeatherDescription(
     weather: { description: string }[]
   ): string {
     return weather.map((cond) => cond.description).join(' and ');
   }
 
+  /** 
+   * this method generate the date time string based on Unix timestamp in seconds
+   * used by the ResponseGenerator to convert unix timestamp to date string
+   */
   public static getDateLocaleString(
     timestamp: number,
     timezone: string
   ): string {
     const date = utcToZonedTime(timestamp * 1000, timezone);
+
     return format(date, 'yyyy-MM-dd HH:mm:ss zzz'); // 2014-10-25 06:46:20 EST
   }
 }

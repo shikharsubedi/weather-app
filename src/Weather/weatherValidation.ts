@@ -6,6 +6,15 @@ const minLatitude = -90;
 const minLongitude = -180;
 const maxLongitude = 180;
 
+/**
+ * This method validates the input parameters
+ * and returns the sanitized input
+ * If a validation error occurs, it throws an instance of Joi.ValidationError
+ * @param lat rawInput
+ * @param lon rawInput
+ * @returns {lat:number, lon:number}
+ * @throws Joi.ValidationError
+ */
 export async function validateInput(
   lat: rawInput,
   lon: rawInput
