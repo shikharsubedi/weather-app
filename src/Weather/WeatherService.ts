@@ -1,7 +1,7 @@
 import axios, { AxiosResponse } from 'axios';
 import { tempType } from './schema/types';
-import { utcToZonedTime } from 'date-fns-tz';
-import { format } from 'date-fns';
+import { utcToZonedTime, formatInTimeZone } from 'date-fns-tz';
+
 import { IWeatherData } from './schema/IWeatherData';
 import { IResponseGenerator } from './schema/IResponseGenerator';
 
@@ -85,6 +85,6 @@ export default class WeatherService {
   ): string {
     const date = utcToZonedTime(timestamp * 1000, timezone);
 
-    return format(date, 'yyyy-MM-dd HH:mm:ss zzz'); // 2014-10-25 06:46:20 EST
+    return formatInTimeZone(date, timezone, 'yyyy-MM-dd HH:mm:ss zzz'); // 2014-10-25 06:46:20 EST
   }
 }

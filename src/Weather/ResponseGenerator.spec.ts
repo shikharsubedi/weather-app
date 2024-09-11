@@ -39,8 +39,8 @@ describe('ResponseGenerator', () => {
     const tempDescription = 'cold';
     const alertsResponse: IApiResponse['alerts'] = [
       {
-        start: '2023-05-24 14:25:47 GMT-4',
-        end: '2023-05-25 00:25:47 GMT-4',
+        start: '2023-05-24 14:25:47 EDT',
+        end: '2023-05-25 00:25:47 EDT',
         event: 'Heavy Rain',
         description: 'Expect heavy rain starting tonight.',
       },
