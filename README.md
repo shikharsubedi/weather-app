@@ -1,3 +1,5 @@
+[![CircleCI](https://circleci.com/gh/shikhar-co/weather-app.svg?style=svg)](https://circleci.com/gh/shikhar-co/weather-app)
+
 **Weather App**
 
 Summary:
