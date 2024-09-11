@@ -2,7 +2,7 @@ version: 2.1
 orbs:
   node: circleci/node@6.1.0
 jobs:
-  build_and_test: # this can be any name you choose
+  lint_and_test: # this can be any name you choose
     executor: node/default # use the default executor defined within the orb
     steps:
       - checkout
@@ -14,12 +14,6 @@ jobs:
       - run:
           command: npm run test
           name: Run tests
-      - run:
-          command: npm run clean
-          name: remove build folder
-      - run:
-          command: npm run build
-          name: Build app
       - persist_to_workspace:
           root: ~/project
           paths:
