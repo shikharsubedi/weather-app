@@ -9,7 +9,7 @@ export default class WeatherService {
   private lat: number;
   private lon: number;
   private responseGenerator: IResponseGenerator;
-  
+
   public constructor(
     lat: number,
     lon: number,
@@ -75,7 +75,7 @@ export default class WeatherService {
     return weather.map((cond) => cond.description).join(' and ');
   }
 
-  /** 
+  /**
    * this method generate the date time string based on Unix timestamp in seconds
    * used by the ResponseGenerator to convert unix timestamp to date string
    */
