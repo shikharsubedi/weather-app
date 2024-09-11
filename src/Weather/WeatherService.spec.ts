@@ -119,7 +119,7 @@ describe('WeatherService', function () {
         timestampInSeconds,
         'America/Los_Angeles'
       );
-      expect(string).to.equal('2024-09-10 07:02:40 PDT');
+      expect(string).to.equal('2024-09-10 10:02:40 PDT');
 
       const newYorkTime = WeatherService.getDateLocaleString(
         timestampInSeconds,
