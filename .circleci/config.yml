@@ -25,3 +25,8 @@ jobs:
           root: ~/project
           paths:
             - .
+
+workflows:
+  test_my_app:
+    jobs:
+      - build_and_test
