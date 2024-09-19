@@ -8,6 +8,6 @@
   "spec": ["src/**/*.spec.ts"],
   "slow": 75,
   "timeout": 2000,
-  "watch-files": ["./src/**/*.spec.ts"],
+  "watch-files": ["./src/**/*.ts"],
   "ui": "bdd"
 }
